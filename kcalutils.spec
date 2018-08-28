@@ -6,7 +6,7 @@
 #
 Name     : kcalutils
 Version  : 18.08.0
-Release  : 2
+Release  : 3
 URL      : https://download.kde.org/stable/applications/18.08.0/src/kcalutils-18.08.0.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.08.0/src/kcalutils-18.08.0.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.08.0/src/kcalutils-18.08.0.tar.xz.sig
@@ -16,6 +16,7 @@ License  : LGPL-2.0
 Requires: kcalutils-lib
 Requires: kcalutils-license
 Requires: kcalutils-locales
+Requires: kcalutils-data
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : grantlee-dev
@@ -29,10 +30,19 @@ BuildRequires : qtbase-dev qtbase-extras mesa-dev
 This library provides a set of utility functions that help applications
 access and use calendar data via the KCalCore library.
 
+%package data
+Summary: data components for the kcalutils package.
+Group: Data
+
+%description data
+data components for the kcalutils package.
+
+
 %package dev
 Summary: dev components for the kcalutils package.
 Group: Development
 Requires: kcalutils-lib
+Requires: kcalutils-data
 Provides: kcalutils-devel
 
 %description dev
@@ -42,6 +52,7 @@ dev components for the kcalutils package.
 %package lib
 Summary: lib components for the kcalutils package.
 Group: Libraries
+Requires: kcalutils-data
 Requires: kcalutils-license
 
 %description lib
@@ -72,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535227637
+export SOURCE_DATE_EPOCH=1535426565
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -80,7 +91,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535227637
+export SOURCE_DATE_EPOCH=1535426565
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/kcalutils
 cp COPYING %{buildroot}/usr/share/doc/kcalutils/COPYING
@@ -91,6 +102,11 @@ popd
 
 %files
 %defattr(-,root,root,-)
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/xdg/kcalutils.categories
+/usr/share/xdg/kcalutils.renamecategories
 
 %files dev
 %defattr(-,root,root,-)
