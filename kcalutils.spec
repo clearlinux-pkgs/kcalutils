@@ -6,13 +6,13 @@
 #
 Name     : kcalutils
 Version  : 18.12.3
-Release  : 6
+Release  : 7
 URL      : https://download.kde.org/stable/applications/18.12.3/src/kcalutils-18.12.3.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.12.3/src/kcalutils-18.12.3.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.12.3/src/kcalutils-18.12.3.tar.xz.sig
-Summary  : No detailed summary available
+Summary  : The KDE calendar utility library
 Group    : Development/Tools
-License  : LGPL-2.0
+License  : GPL-2.0
 Requires: kcalutils-data = %{version}-%{release}
 Requires: kcalutils-lib = %{version}-%{release}
 Requires: kcalutils-license = %{version}-%{release}
@@ -44,6 +44,7 @@ Group: Development
 Requires: kcalutils-lib = %{version}-%{release}
 Requires: kcalutils-data = %{version}-%{release}
 Provides: kcalutils-devel = %{version}-%{release}
+Requires: kcalutils = %{version}-%{release}
 
 %description dev
 dev components for the kcalutils package.
@@ -83,16 +84,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552019940
+export SOURCE_DATE_EPOCH=1555324142
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552019940
+export SOURCE_DATE_EPOCH=1555324142
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kcalutils
 cp COPYING %{buildroot}/usr/share/package-licenses/kcalutils/COPYING
