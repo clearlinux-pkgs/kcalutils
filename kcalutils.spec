@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kcalutils
-Version  : 19.04.3
-Release  : 12
-URL      : https://download.kde.org/stable/applications/19.04.3/src/kcalutils-19.04.3.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.3/src/kcalutils-19.04.3.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.3/src/kcalutils-19.04.3.tar.xz.sig
+Version  : 19.08.0
+Release  : 13
+URL      : https://download.kde.org/stable/applications/19.08.0/src/kcalutils-19.08.0.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.08.0/src/kcalutils-19.08.0.tar.xz
+Source1 : https://download.kde.org/stable/applications/19.08.0/src/kcalutils-19.08.0.tar.xz.sig
 Summary  : The KDE calendar utility library
 Group    : Development/Tools
 License  : GPL-2.0
@@ -28,7 +28,7 @@ BuildRequires : qtbase-dev mesa-dev
 %description
 # KCalUtils #
 This library provides a set of utility functions that help applications
-access and use calendar data via the KCalCore library.
+access and use calendar data via the KCalendarCore library.
 
 %package data
 Summary: data components for the kcalutils package.
@@ -78,16 +78,17 @@ locales components for the kcalutils package.
 
 
 %prep
-%setup -q -n kcalutils-19.04.3
+%setup -q -n kcalutils-19.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1562949987
+export SOURCE_DATE_EPOCH=1565927853
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -101,7 +102,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1562949987
+export SOURCE_DATE_EPOCH=1565927853
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kcalutils
 cp COPYING %{buildroot}/usr/share/package-licenses/kcalutils/COPYING
@@ -115,8 +116,8 @@ popd
 
 %files data
 %defattr(-,root,root,-)
-/usr/share/xdg/kcalutils.categories
-/usr/share/xdg/kcalutils.renamecategories
+/usr/share/qlogging-categories5/kcalutils.categories
+/usr/share/qlogging-categories5/kcalutils.renamecategories
 
 %files dev
 %defattr(-,root,root,-)
@@ -125,7 +126,6 @@ popd
 /usr/include/KF5/KCalUtils/KCalUtils/ICalDrag
 /usr/include/KF5/KCalUtils/KCalUtils/IncidenceFormatter
 /usr/include/KF5/KCalUtils/KCalUtils/RecurrenceActions
-/usr/include/KF5/KCalUtils/KCalUtils/Scheduler
 /usr/include/KF5/KCalUtils/KCalUtils/Stringify
 /usr/include/KF5/KCalUtils/KCalUtils/VCalDrag
 /usr/include/KF5/KCalUtils/kcalutils/HTMLExportSettings
@@ -136,7 +136,6 @@ popd
 /usr/include/KF5/KCalUtils/kcalutils/incidenceformatter.h
 /usr/include/KF5/KCalUtils/kcalutils/kcalutils_export.h
 /usr/include/KF5/KCalUtils/kcalutils/recurrenceactions.h
-/usr/include/KF5/KCalUtils/kcalutils/scheduler.h
 /usr/include/KF5/KCalUtils/kcalutils/stringify.h
 /usr/include/KF5/KCalUtils/kcalutils/vcaldrag.h
 /usr/include/KF5/kcalutils_version.h
@@ -151,7 +150,7 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/grantlee/5.1/kcalendar_grantlee_plugin.so
 /usr/lib64/libKF5CalendarUtils.so.5
-/usr/lib64/libKF5CalendarUtils.so.5.11.3
+/usr/lib64/libKF5CalendarUtils.so.5.12.0
 
 %files license
 %defattr(0644,root,root,0755)
