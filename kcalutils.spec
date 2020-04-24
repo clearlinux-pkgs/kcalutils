@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kcalutils
-Version  : 19.12.3
-Release  : 21
-URL      : https://download.kde.org/stable/release-service/19.12.3/src/kcalutils-19.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.3/src/kcalutils-19.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.3/src/kcalutils-19.12.3.tar.xz.sig
+Version  : 20.04.0
+Release  : 22
+URL      : https://download.kde.org/stable/release-service/20.04.0/src/kcalutils-20.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.0/src/kcalutils-20.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.0/src/kcalutils-20.04.0.tar.xz.sig
 Summary  : The KDE calendar utility library
 Group    : Development/Tools
 License  : GPL-2.0
@@ -78,15 +78,15 @@ locales components for the kcalutils package.
 
 
 %prep
-%setup -q -n kcalutils-19.12.3
-cd %{_builddir}/kcalutils-19.12.3
+%setup -q -n kcalutils-20.04.0
+cd %{_builddir}/kcalutils-20.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583509718
+export SOURCE_DATE_EPOCH=1587695940
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -103,10 +103,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1583509718
+export SOURCE_DATE_EPOCH=1587695940
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kcalutils
-cp %{_builddir}/kcalutils-19.12.3/COPYING %{buildroot}/usr/share/package-licenses/kcalutils/52587f1695c0aa1f770f3a445033b920a66d3566
+cp %{_builddir}/kcalutils-20.04.0/COPYING %{buildroot}/usr/share/package-licenses/kcalutils/52587f1695c0aa1f770f3a445033b920a66d3566
 pushd clr-build
 %make_install
 popd
@@ -149,9 +149,9 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/grantlee/5.1/kcalendar_grantlee_plugin.so
+/usr/lib64/grantlee/5.2/kcalendar_grantlee_plugin.so
 /usr/lib64/libKF5CalendarUtils.so.5
-/usr/lib64/libKF5CalendarUtils.so.5.13.3
+/usr/lib64/libKF5CalendarUtils.so.5.14.0
 
 %files license
 %defattr(0644,root,root,0755)
