@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kcalutils
-Version  : 20.04.0
-Release  : 22
-URL      : https://download.kde.org/stable/release-service/20.04.0/src/kcalutils-20.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.0/src/kcalutils-20.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.0/src/kcalutils-20.04.0.tar.xz.sig
+Version  : 20.04.1
+Release  : 23
+URL      : https://download.kde.org/stable/release-service/20.04.1/src/kcalutils-20.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.1/src/kcalutils-20.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.1/src/kcalutils-20.04.1.tar.xz.sig
 Summary  : The KDE calendar utility library
 Group    : Development/Tools
 License  : GPL-2.0
@@ -19,10 +19,18 @@ Requires: kcalutils-license = %{version}-%{release}
 Requires: kcalutils-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules-data
 BuildRequires : grantlee-dev
 BuildRequires : kcalendarcore-dev
+BuildRequires : kcodecs-dev
+BuildRequires : kconfig-dev
+BuildRequires : kconfigwidgets-dev
+BuildRequires : kcoreaddons-dev
+BuildRequires : ki18n-dev
+BuildRequires : kiconthemes-dev
 BuildRequires : kidentitymanagement-dev
 BuildRequires : kpimtextedit-dev
+BuildRequires : kwidgetsaddons-dev
 BuildRequires : qtbase-dev mesa-dev
 
 %description
@@ -44,7 +52,6 @@ Group: Development
 Requires: kcalutils-lib = %{version}-%{release}
 Requires: kcalutils-data = %{version}-%{release}
 Provides: kcalutils-devel = %{version}-%{release}
-Requires: kcalutils = %{version}-%{release}
 Requires: kcalutils = %{version}-%{release}
 
 %description dev
@@ -78,35 +85,34 @@ locales components for the kcalutils package.
 
 
 %prep
-%setup -q -n kcalutils-20.04.0
-cd %{_builddir}/kcalutils-20.04.0
+%setup -q -n kcalutils-20.04.1
+cd %{_builddir}/kcalutils-20.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1587695940
+export SOURCE_DATE_EPOCH=1589850745
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1587695940
+export SOURCE_DATE_EPOCH=1589850745
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kcalutils
-cp %{_builddir}/kcalutils-20.04.0/COPYING %{buildroot}/usr/share/package-licenses/kcalutils/52587f1695c0aa1f770f3a445033b920a66d3566
+cp %{_builddir}/kcalutils-20.04.1/COPYING %{buildroot}/usr/share/package-licenses/kcalutils/52587f1695c0aa1f770f3a445033b920a66d3566
 pushd clr-build
 %make_install
 popd
@@ -151,7 +157,7 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/grantlee/5.2/kcalendar_grantlee_plugin.so
 /usr/lib64/libKF5CalendarUtils.so.5
-/usr/lib64/libKF5CalendarUtils.so.5.14.0
+/usr/lib64/libKF5CalendarUtils.so.5.14.1
 
 %files license
 %defattr(0644,root,root,0755)
