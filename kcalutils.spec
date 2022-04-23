@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kcalutils
-Version  : 21.12.3
-Release  : 41
-URL      : https://download.kde.org/stable/release-service/21.12.3/src/kcalutils-21.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.12.3/src/kcalutils-21.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.12.3/src/kcalutils-21.12.3.tar.xz.sig
+Version  : 22.04.0
+Release  : 42
+URL      : https://download.kde.org/stable/release-service/22.04.0/src/kcalutils-22.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.0/src/kcalutils-22.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.0/src/kcalutils-22.04.0.tar.xz.sig
 Summary  : The KDE calendar utility library
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 LGPL-2.0 LGPL-2.1
@@ -31,12 +31,9 @@ BuildRequires : kiconthemes-dev
 BuildRequires : kidentitymanagement-dev
 BuildRequires : kpimtextedit-dev
 BuildRequires : kwidgetsaddons-dev
-BuildRequires : qtbase-dev mesa-dev
 
 %description
-# KCalUtils #
-This library provides a set of utility functions that help applications
-access and use calendar data via the KCalendarCore library.
+SPDX-License-Identifier: CC0-1.0
 
 %package data
 Summary: data components for the kcalutils package.
@@ -85,15 +82,15 @@ locales components for the kcalutils package.
 
 
 %prep
-%setup -q -n kcalutils-21.12.3
-cd %{_builddir}/kcalutils-21.12.3
+%setup -q -n kcalutils-22.04.0
+cd %{_builddir}/kcalutils-22.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1646600400
+export SOURCE_DATE_EPOCH=1650731329
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -109,14 +106,17 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1646600400
+export SOURCE_DATE_EPOCH=1650731329
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kcalutils
-cp %{_builddir}/kcalutils-21.12.3/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/kcalutils/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/kcalutils-21.12.3/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kcalutils/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/kcalutils-21.12.3/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kcalutils/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/kcalutils-21.12.3/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kcalutils/6f1f675aa5f6a2bbaa573b8343044b166be28399
-cp %{_builddir}/kcalutils-21.12.3/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/kcalutils/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
+cp %{_builddir}/kcalutils-22.04.0/.krazy.license %{buildroot}/usr/share/package-licenses/kcalutils/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
+cp %{_builddir}/kcalutils-22.04.0/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/kcalutils/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9
+cp %{_builddir}/kcalutils-22.04.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kcalutils/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/kcalutils-22.04.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kcalutils/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/kcalutils-22.04.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kcalutils/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/kcalutils-22.04.0/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kcalutils/6f1f675aa5f6a2bbaa573b8343044b166be28399
+cp %{_builddir}/kcalutils-22.04.0/README.md.license %{buildroot}/usr/share/package-licenses/kcalutils/cadc9e08cb956c041f87922de84b9206d9bbffb2
+cp %{_builddir}/kcalutils-22.04.0/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/kcalutils/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 pushd clr-build
 %make_install
 popd
@@ -133,13 +133,13 @@ popd
 %files dev
 %defattr(-,root,root,-)
 /usr/include/KF5/KCalUtils/KCalUtils/DndFactory
+/usr/include/KF5/KCalUtils/KCalUtils/HTMLExportSettings
 /usr/include/KF5/KCalUtils/KCalUtils/HtmlExport
 /usr/include/KF5/KCalUtils/KCalUtils/ICalDrag
 /usr/include/KF5/KCalUtils/KCalUtils/IncidenceFormatter
 /usr/include/KF5/KCalUtils/KCalUtils/RecurrenceActions
 /usr/include/KF5/KCalUtils/KCalUtils/Stringify
 /usr/include/KF5/KCalUtils/KCalUtils/VCalDrag
-/usr/include/KF5/KCalUtils/kcalutils/HTMLExportSettings
 /usr/include/KF5/KCalUtils/kcalutils/dndfactory.h
 /usr/include/KF5/KCalUtils/kcalutils/htmlexport.h
 /usr/include/KF5/KCalUtils/kcalutils/htmlexportsettings.h
@@ -149,7 +149,7 @@ popd
 /usr/include/KF5/KCalUtils/kcalutils/recurrenceactions.h
 /usr/include/KF5/KCalUtils/kcalutils/stringify.h
 /usr/include/KF5/KCalUtils/kcalutils/vcaldrag.h
-/usr/include/KF5/kcalutils_version.h
+/usr/include/KF5/KCalUtils/kcalutils_version.h
 /usr/lib64/cmake/KF5CalendarUtils/KF5CalendarUtilsConfig.cmake
 /usr/lib64/cmake/KF5CalendarUtils/KF5CalendarUtilsConfigVersion.cmake
 /usr/lib64/cmake/KF5CalendarUtils/KF5CalendarUtilsTargets-relwithdebinfo.cmake
@@ -159,17 +159,19 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/grantlee/5.2/kcalendar_grantlee_plugin.so
+/usr/lib64/KTextTemplate/kcalendar_grantlee_plugin.so
 /usr/lib64/libKF5CalendarUtils.so.5
-/usr/lib64/libKF5CalendarUtils.so.5.19.3
+/usr/lib64/libKF5CalendarUtils.so.5.20.0
 
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/kcalutils/20079e8f79713dce80ab09774505773c926afa2a
-/usr/share/package-licenses/kcalutils/29fb05b49e12a380545499938c4879440bd8851e
 /usr/share/package-licenses/kcalutils/6f1f675aa5f6a2bbaa573b8343044b166be28399
 /usr/share/package-licenses/kcalutils/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 /usr/share/package-licenses/kcalutils/8287b608d3fa40ef401339fd907ca1260c964123
+/usr/share/package-licenses/kcalutils/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+/usr/share/package-licenses/kcalutils/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9
+/usr/share/package-licenses/kcalutils/cadc9e08cb956c041f87922de84b9206d9bbffb2
 
 %files locales -f libkcalutils5.lang
 %defattr(-,root,root,-)
