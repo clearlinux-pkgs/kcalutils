@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kcalutils
-Version  : 22.12.2
-Release  : 53
-URL      : https://download.kde.org/stable/release-service/22.12.2/src/kcalutils-22.12.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.12.2/src/kcalutils-22.12.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.12.2/src/kcalutils-22.12.2.tar.xz.sig
+Version  : 22.12.3
+Release  : 54
+URL      : https://download.kde.org/stable/release-service/22.12.3/src/kcalutils-22.12.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.12.3/src/kcalutils-22.12.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.12.3/src/kcalutils-22.12.3.tar.xz.sig
 Summary  : The KDE calendar utility library
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 LGPL-2.0 LGPL-2.1
@@ -85,15 +85,15 @@ locales components for the kcalutils package.
 
 
 %prep
-%setup -q -n kcalutils-22.12.2
-cd %{_builddir}/kcalutils-22.12.2
+%setup -q -n kcalutils-22.12.3
+cd %{_builddir}/kcalutils-22.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1676835845
+export SOURCE_DATE_EPOCH=1677800652
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -109,7 +109,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1676835845
+export SOURCE_DATE_EPOCH=1677800652
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kcalutils
 cp %{_builddir}/kcalutils-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/kcalutils/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
@@ -164,7 +164,7 @@ popd
 %defattr(-,root,root,-)
 /usr/lib64/grantlee/5.2/kcalendar_grantlee_plugin.so
 /usr/lib64/libKF5CalendarUtils.so.5
-/usr/lib64/libKF5CalendarUtils.so.5.22.2
+/usr/lib64/libKF5CalendarUtils.so.5.22.3
 
 %files license
 %defattr(0644,root,root,0755)
