@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kcalutils
-Version  : 23.04.3
-Release  : 59
-URL      : https://download.kde.org/stable/release-service/23.04.3/src/kcalutils-23.04.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.04.3/src/kcalutils-23.04.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.04.3/src/kcalutils-23.04.3.tar.xz.sig
+Version  : 23.08.0
+Release  : 60
+URL      : https://download.kde.org/stable/release-service/23.08.0/src/kcalutils-23.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.0/src/kcalutils-23.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.0/src/kcalutils-23.08.0.tar.xz.sig
 Summary  : The KDE calendar utility library
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 LGPL-2.0 LGPL-2.1
@@ -79,15 +79,15 @@ locales components for the kcalutils package.
 
 
 %prep
-%setup -q -n kcalutils-23.04.3
-cd %{_builddir}/kcalutils-23.04.3
+%setup -q -n kcalutils-23.08.0
+cd %{_builddir}/kcalutils-23.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1688880164
+export SOURCE_DATE_EPOCH=1693073993
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -120,7 +120,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1688880164
+export SOURCE_DATE_EPOCH=1693073993
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kcalutils
 cp %{_builddir}/kcalutils-%{version}/.krazy.license %{buildroot}/usr/share/package-licenses/kcalutils/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
@@ -150,16 +150,12 @@ popd
 %files dev
 %defattr(-,root,root,-)
 /usr/include/KPim5/KCalUtils/KCalUtils/DndFactory
-/usr/include/KPim5/KCalUtils/KCalUtils/HTMLExportSettings
-/usr/include/KPim5/KCalUtils/KCalUtils/HtmlExport
 /usr/include/KPim5/KCalUtils/KCalUtils/ICalDrag
 /usr/include/KPim5/KCalUtils/KCalUtils/IncidenceFormatter
 /usr/include/KPim5/KCalUtils/KCalUtils/RecurrenceActions
 /usr/include/KPim5/KCalUtils/KCalUtils/Stringify
 /usr/include/KPim5/KCalUtils/KCalUtils/VCalDrag
 /usr/include/KPim5/KCalUtils/kcalutils/dndfactory.h
-/usr/include/KPim5/KCalUtils/kcalutils/htmlexport.h
-/usr/include/KPim5/KCalUtils/kcalutils/htmlexportsettings.h
 /usr/include/KPim5/KCalUtils/kcalutils/icaldrag.h
 /usr/include/KPim5/KCalUtils/kcalutils/incidenceformatter.h
 /usr/include/KPim5/KCalUtils/kcalutils/kcalutils_export.h
@@ -167,10 +163,6 @@ popd
 /usr/include/KPim5/KCalUtils/kcalutils/stringify.h
 /usr/include/KPim5/KCalUtils/kcalutils/vcaldrag.h
 /usr/include/KPim5/KCalUtils/kcalutils_version.h
-/usr/lib64/cmake/KF5CalendarUtils/KF5CalendarUtilsConfig.cmake
-/usr/lib64/cmake/KF5CalendarUtils/KF5CalendarUtilsConfigVersion.cmake
-/usr/lib64/cmake/KF5CalendarUtils/KPim5CalendarUtilsTargets-relwithdebinfo.cmake
-/usr/lib64/cmake/KF5CalendarUtils/KPim5CalendarUtilsTargets.cmake
 /usr/lib64/cmake/KPim5CalendarUtils/KPim5CalendarUtilsConfig.cmake
 /usr/lib64/cmake/KPim5CalendarUtils/KPim5CalendarUtilsConfigVersion.cmake
 /usr/lib64/cmake/KPim5CalendarUtils/KPim5CalendarUtilsTargets-relwithdebinfo.cmake
@@ -181,10 +173,10 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /V3/usr/lib64/grantlee/5.3/kcalendar_grantlee_plugin.so
-/V3/usr/lib64/libKPim5CalendarUtils.so.5.23.3
+/V3/usr/lib64/libKPim5CalendarUtils.so.5.24.0
 /usr/lib64/grantlee/5.3/kcalendar_grantlee_plugin.so
 /usr/lib64/libKPim5CalendarUtils.so.5
-/usr/lib64/libKPim5CalendarUtils.so.5.23.3
+/usr/lib64/libKPim5CalendarUtils.so.5.24.0
 
 %files license
 %defattr(0644,root,root,0755)
